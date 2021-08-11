@@ -1,0 +1,96 @@
+{% extends 'corona_info/base.html' %}
+
+
+{% block content %}
+
+<div class="jumbotron-fluid">
+	<div class="d-flex justify-content-center">
+		<img src="https://i.ya-webdesign.com/images/flower-logo-png-3.png" alt="Logo" id="brand_logo"/>
+		<h2 class="display-3 text-dark " style="font-weight:490;font-family: 'Fugaz One', cursive;">Getify</h2>
+	</div><!--d-flex-->
+</div><!--jumbotron-->
+
+<div class="jumbotron-fluid mt-1">
+	<div id="headBackground">
+		<div id="headText" class="d-flex flex-column">
+			<div class="d-flex">
+				<h1 class="display-3 text-info" style="">{{ total_case }}</h1>
+				<span class="text-muted" style="position:relative;top:20px;font-size:43px">&nbsp;cases</span>
+			</div><!--d flex-->
+			<div class="d-flex">
+				<p class="" style="font-size:30px;position:relative;top:19px;color:#d10c40">Till&nbsp</p>
+				<p class="display-4 text-center text-dark">{{ last_updated }}</p>
+			</div><!--d flex-->
+		</div><!--headtext-->
+	</div><!--headBackground-->
+</div><!--conatienr fluid-->
+
+<div class="jumbotron-fluid mt-2 mb-5 pt-3">
+
+	<div id="bodyBackground">
+		<div id="bodyContent">
+			<div class="d-flex flex-column">
+			 	<h1 class="text-center"><span style="color:orange">I</span>n<span style="color:#2ca5db">d</span>i<span style="color:lightgreen">a</span></h1>
+				<div class="d-flex justify-content-around mt-3">
+					<div class="d-flex flex-column">
+						<small class="text-warning font-weight-bold">Total Cases</small>
+				 		<p class="text-center" style="font-size:22px">{{ total_case }}</p>
+				 	</div><!--inner flex-->
+					<div class="d-flex flex-column">
+						<small class="text-info font-weight-bold">Active Cases</small>
+				 		<p class="text-center" style="font-size:22px">{{ active_case }}</p>
+				 	</div><!--inner flex-->
+				</div><!--d flex-->
+				<div class="d-flex justify-content-around">
+				 	<div class="d-flex flex-column">
+						<small class="text-success font-weight-bold">Recovered</small>
+				 		<p class="text-center" style="font-size:22px">{{ recovered }}</p>
+				 	</div><!--inner flex-->
+				 	<div class="d-flex flex-column">
+						<small class="text-danger font-weight-bold">Death Cases</small>
+				 		<p class="text-center" style="font-size:22px">{{ death_case }}</p>
+				 	</div><!--inner flex-->
+				</div><!--d flex-->
+			</div><!--flex column-->
+		</div><!--bodyContent-->
+	</div><!--bodyBackground-->
+</div><!--container-fluid-->
+
+<div class="container-fluid mb-5 mr-3 ">
+	<h3 class="display-3 text-center mb-5 lead" style="text-decoration: overline underline black;color:#ff1e56"><b>Region</b></h3>
+	<div class="d-flex flex-wrap justify-content-around">
+		{% for data in region_data %}
+			<div class="card mb-3 {% if forloop.counter|divisibleby:'2' %}card_even{% else %}card_odd{% endif %}">
+				<div class="card-content">
+					<div class="card-body">
+						<div class="d-flex flex-column" >
+							<h2 class="text-center mb-4" style="color:{% cycle '#17A2BB' '#656B22' %}"><u>{{ data.region }}</u></h2>
+							<p style="font-size:18px"><b>Total Cases :</b> <span style="color:#4572b2">{{ data.totalCases }}</span></p>
+							<p style="font-size:18px"><b>Infected :</b> <span style="color:sienna">{{ data.totalInfected }}</span></p>
+							<p style="font-size:18px"><b>Recovered :</b> <span style="color:green">{{ data.recovered }}</span></p>
+							<p style="font-size:18px"><b>Deceased :</b> <span style="color:{% if forloop.counter|divisibleby:'2' %}darkred;{% else %}#dd0825;{% endif %}">{{ data.deceased }}</span></p>
+						</div><!--flex-coulmn-->
+					</div><!--card-body-->
+				</div><!--card-content-->
+			</div><!--card-->
+		{% endfor %}
+		
+	</div><!--flex-wrap-->
+</div><!--container-fluid-->
+
+<footer>
+	<div class="jumbotron-fluid" id="footer">
+		<div class="d-flex flex-column">
+			<span class="text-center"><b>&copy;</b> 2020-{{ present_year }}</span>
+			<span class="text-center"><b>@</b> Getify </span>
+			<span class="text-center"><b>Creator </b>- Mohit</span>		
+		</div> 
+	</div><!--jumbotron fluid-->
+</footer>
+
+
+{% endblock content %}
+
+
+#17A2B8
+#656B22
