@@ -18,15 +18,14 @@ def corona_case_home_view(request):
 	last_updated = Date +"-"+ Month +"-" + Year
 
 	context = {
-
-			"active_case":corona_info['activeCases'],
-			"recovered":corona_info['recovered'],
-			"death_case":corona_info['deaths'],
-			"total_case":corona_info['totalCases'],
-			"last_updated":last_updated,
-			"region_data":corona_info['regionData'],
-			"present_year":timezone.localtime().year
-			  }
+			"active_case": corona_info['activeCases'],
+			"recovered": corona_info['recovered'],
+			"death_case": corona_info['deaths'],
+			"total_case": corona_info['totalCases'],
+			"last_updated": last_updated,
+			"region_data": corona_info['regionData'],
+			"present_year": timezone.localtime().year
+	}
 
 
 	return render(request,'corona_info/corona_detail.html',context)
