@@ -1,8 +1,6 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render
 from django.utils import timezone
 import requests
-from bs4 import BeautifulSoup
-from django.http import HttpResponse,Http404
 
 
 def corona_case_home_view(request):
